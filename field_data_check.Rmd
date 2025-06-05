@@ -14,7 +14,6 @@ link <- "https://docs.google.com/spreadsheets/d/1hx4cfYkSN_qkxiflkWz671YZgigHJpV
 herb <- as.data.frame(read_sheet(link, sheet = "enrich_dep"))
 ```
 
-
 ## make an overview of collected data
 
 ```{r}
