@@ -9,6 +9,9 @@ output: html_document
 ```{r}
 library(googlesheets4) 
 gs4_auth() 
+
+link <- "https://docs.google.com/spreadsheets/d/1hx4cfYkSN_qkxiflkWz671YZgigHJpVgloy44rvMqMM/edit?gid=995495004#gid=995495004"
+herb <- as.data.frame(read_sheet(link, sheet = "enrich_dep"))
 ```
 
 
