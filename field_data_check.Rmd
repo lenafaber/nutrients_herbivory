@@ -1,0 +1,21 @@
+---
+title: "fieldwork_data_check"
+author: "L.L. Faber"
+date: "2025-06-05"
+output: html_document
+---
+## load data from google drive
+
+```{r}
+library(googlesheets4) 
+gs4_auth() 
+```
+
+
+## make an overview of collected data
+
+```{r}
+
+```
+
+
