@@ -14,10 +14,36 @@ link <- "https://docs.google.com/spreadsheets/d/1hx4cfYkSN_qkxiflkWz671YZgigHJpV
 herb <- as.data.frame(read_sheet(link, sheet = "enrich_dep"))
 ```
 
-## make an overview of collected data
+## make an overview of collected data 
+# plot reps per site
 
 ```{r}
+library(dplyr)
 
+number_trails <- herb %>%
+  group_by(site) %>%
+  summarise(trails = n_distinct(Block_ID))
+number_trails
 ```
+
+# counts of how often there was any feeding per site 
+```{r}
+feeding_counts <- herb %>%
+  group_by(site, Block_ID) %>%
+  summarise(any_feeding = any(bite_rate_mm_h > 0, na.rm = TRUE), .groups = "drop") %>%
+  group_by(site) %>%
+  summarise(blocks_with_feeding = sum(any_feeding))
+feeding_counts
+
+feeding_counts_treatment <- herb %>%
+  group_by(Block_ID, treatments) %>%
+  summarise(any_feeding = any(bite_rate_mm_h > 0, na.rm = TRUE), .groups = "drop") %>%
+  group_by(treatments) %>%
+  summarise(blocks_with_feeding = sum(any_feeding))
+feeding_counts_treatment
+```
+# boxplot of mm eaten per treatment
+
+# mean grazing rate 
 
 
